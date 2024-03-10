@@ -17,4 +17,4 @@ const Box: React.FC<BoxProps> = ({ children, className, ...props }) => {
   )
 }
 
-export default Box
+export { Box }

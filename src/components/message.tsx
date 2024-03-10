@@ -17,7 +17,9 @@ const messageVariants = cva([
   }
 })
 
-interface MessageVariantProps extends VariantProps<typeof messageVariants>, React.HTMLAttributes<HTMLDivElement> { }
+interface MessageVariantProps extends VariantProps<typeof messageVariants>, React.HTMLAttributes<HTMLDivElement> {
+
+}
 
 const Message: React.FC<MessageVariantProps> = ({ variant, className, ...props }) => {
   return (

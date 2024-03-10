@@ -31,7 +31,7 @@ interface IconVariants extends IconProps,
   VariantProps<typeof iconVariants> { }
 
 
-const Icon: React.FC<IconVariants> = ({ name, sizes, className, ...props }) => {
+const IconMemo: React.FC<IconVariants> = ({ name, sizes, className, ...props }) => {
   const LucideIcon = dynamic(dynamicIconImports[name])
 
   return (
@@ -42,6 +42,8 @@ const Icon: React.FC<IconVariants> = ({ name, sizes, className, ...props }) => {
     </div>
   )
 }
+
+const Icon = React.memo(IconMemo)
 
 Icon.displayName = 'Icon'
 

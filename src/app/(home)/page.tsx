@@ -1,8 +1,13 @@
+'use client'
+
+import { useRoomStore } from '@/providers/room-store-provider'
+
 import { Button } from "@/components/button"
-import { cn } from "@/utils/tw-merge"
+import { CreateNewRoomButton } from "@/components/create-new-room-button"
+import { RecentlyRoom } from "@/components/recently-room"
 
 export default function Home() {
-  const visited = !false
+  const roomId = useRoomStore(store => store.roomId!!)
 
   return (
     <div className="container mx-auto">
@@ -15,11 +20,7 @@ export default function Home() {
         </div>
 
         <div role="navigation" className="flex flex-col gap-6 md:w-[280px]">
-          <Button className="bg-dark-green hover:bg-dark-green/90" type="button" aria-label="Create your room">
-            <div>
-              Create your room
-            </div>
-          </Button>
+          <CreateNewRoomButton />
 
           <Button className="bg-light-green hover:bg-light-green/90" type="button" aria-label="Enter room code">
             <div className="text-dark-green">
@@ -27,23 +28,8 @@ export default function Home() {
             </div>
           </Button>
 
-          {visited && (
-            <div className="my-4 space-y-4">
-              <h3 className="text-body-small text-white">Recently visited</h3>
-
-              <Button
-                type="button"
-                aria-label="EBSCB0"
-                className={cn([
-                  "bg-transparent",
-                  "border-4 border-light-green bg-transparent"
-                ])}
-              >
-                <div>
-                  EBSCB0
-                </div>
-              </Button>
-            </div>
+          {roomId && (
+            <RecentlyRoom roomId={roomId} />
           )}
         </div>
       </div>

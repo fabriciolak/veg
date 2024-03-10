@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Logo from "@/components/logo";
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {

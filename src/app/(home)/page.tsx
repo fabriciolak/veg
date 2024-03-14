@@ -1,38 +1,40 @@
-'use client'
+import React from "react"
 
-import { useRoomStore } from '@/providers/room-store-provider'
-
-import { Button } from "@/components/button"
+import { cn } from "@/utils/tw-merge"
+import { Button } from '@/components/button'
 import { CreateNewRoomButton } from "@/components/create-new-room-button"
 import { RecentlyRoom } from "@/components/recently-room"
 
-export default function Home() {
-  const roomId = useRoomStore(store => store.roomId!!)
-
+const Home: React.FC = () => {
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col md:w-[720px] gap-8">
-        <div role="banner">
-          <h1 className="text-heading-3 md:text-heading-1 text-green-linear">Veg</h1>
-          <h2 className="text-body-x-large md:text-heading-3 text-green-linear">
-            The new way to share stuff between devices
-          </h2>
-        </div>
+    <div className={cn([
+      "",
+      "text-center animate-slidein space-y-8 w-[720px]"
+    ])}>
+      <RecentlyRoom />
+      <div className="space-y-4">
+        <h1 className="text-7xl leading-[88px] font-bold text-dark-green">
+          Streamline device Sharing
+        </h1>
 
-        <div role="navigation" className="flex flex-col gap-6 md:w-[280px]">
+        <h2 className="text-lg text-dark-green/80">
+          The new way to share stuff between devices
+        </h2>
+
+        <div className="space-x-4">
           <CreateNewRoomButton />
-
-          <Button className="bg-light-green hover:bg-light-green/90" type="button" aria-label="Enter room code">
-            <div className="text-dark-green">
-              Enter room code
-            </div>
+          <Button
+            type="button"
+            size="large"
+            aria-label="Enter room code"
+            className="bg-white text-black"
+          >
+            Enter room code
           </Button>
-
-          {roomId && (
-            <RecentlyRoom roomId={roomId} />
-          )}
         </div>
       </div>
     </div>
   )
 }
+
+export default Home

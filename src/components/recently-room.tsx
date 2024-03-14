@@ -1,27 +1,20 @@
+'use client'
+
 import { Button } from '@/components/button'
-import { cn } from '@/utils/tw-merge'
+import { useRoomStore } from '@/providers/room-store-provider'
 
-interface RecentlyRoomProps {
-  roomId: string
-}
+const RecentlyRoom: React.FC = () => {
+  const roomId = useRoomStore(store => store.roomId)
 
-const RecentlyRoom: React.FC<RecentlyRoomProps> = ({ roomId }) => {
   return (
-    <div className="my-4 space-y-4">
-      <h3 className="text-body-small text-white">Recently visited</h3>
-
-      <Button
-        type="button"
-        aria-label="EBSCB0"
-        className={cn([
-          "text-white bg-transparent",
-          "border-4 border-light-green bg-transparent"
-        ])}
-      >
-        <div>
-          {roomId}
-        </div>
-      </Button>
+    <div>
+      {roomId && (
+        <Button className="p-2 px-3 border border-dark-green inline-flex rounded-xl">
+          <div className="text-xs font-semibold space-x-2">
+            <span>Recently room {roomId}</span>
+          </div>
+        </Button>
+      )}
     </div>
   )
 }

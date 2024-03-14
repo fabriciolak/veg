@@ -11,6 +11,8 @@ export type RoomAction = {
 
   // TODO: Clear room store from local storage after room is created
   clearRoomStoreFromLocalStorage?: () => void
+
+  clearRoomId: () => void
 }
 
 export type RoomStore = RoomState & RoomAction
@@ -22,6 +24,7 @@ export const defaultInitialState: RoomState = {
 export const createRoomStore = (initState: RoomState = defaultInitialState) => {
   return createStore<RoomStore>((set) => ({
     ...initState,
-    setRoomId: (roomId) => set(() => ({ roomId }))
+    setRoomId: (roomId) => set({ roomId }),
+    clearRoomId: () => set({ roomId: '' }),
   }))
 }

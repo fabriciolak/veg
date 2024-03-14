@@ -18,4 +18,13 @@
     background-clip: text;
     background-image: linear-gradient(131.21deg, var(--green-linear-start) 26.66%, var(--green-linear-end) 132.88%);
   }
+
+  .shine-linear {
+    background: linear-gradient(110deg,#7ADF35,45%,#ACFF74,55%,#7ADF35);
+    background-size: 300% 100%;
+  }
+
+  .shine-delay {
+    --shine-delay: 0ms;
+  }
 }

@@ -5,10 +5,10 @@ import { cn } from '@/utils/tw-merge'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 const buttonVariants = cva([
-  "inline-flex items-center justify-center gap-4 px-4 py-2 rounded-md transition-colors",
+  "inline-flex items-center justify-center gap-4 px-4 py-2 rounded-xl transition-colors",
   "focus-visible:ring-2 focus-visible:ring-light-green focus-visible:ring-offset-2 ring-offset-light-green",
   "disabled:opacity-50 disabled:pointer-events-none",
-  "text-body-xs",
+  "font-semibold text-body-xs",
 ], {
   variants: {
     variant: {

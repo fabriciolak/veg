@@ -1,8 +1,11 @@
+'use client'
+
 import React from "react";
 
+import Link from 'next/link'
 import { Button } from "@/components/button";
 import { Icon } from "@/components/icon";
-import Link from 'next/link'
+import { useRoomStore } from "@/providers/room-store-provider";
 
 interface RoomLayoutProps {
   children: React.ReactNode
@@ -12,15 +15,26 @@ interface RoomLayoutProps {
 }
 
 const RoomLayout: React.FC<RoomLayoutProps> = ({ children, params }) => {
+  const clearRoomId = useRoomStore(state => state.clearRoomId)
+
+  const backToHome = () => {
+    clearRoomId()
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#EEF0EE]">
       <header className="bg-dark-green grid grid-cols-3 text-white py-2 px-4">
         <h1 className="sr-only">Veg</h1>
 
         <div className="flex justify-start items-center">
-          <Link href="/">
-            <Icon name="arrow-left" sizes='x-large' aria-label="Back to home" />
-          </Link>
+          <Button
+            onClick={backToHome}
+            asChild
+          >
+            <Link href="/">
+              <Icon name="arrow-left" sizes='x-large' aria-label="Back to home" />
+            </Link>
+          </Button>
         </div>
 
         <div className="flex flex-col items-center gap-1">
